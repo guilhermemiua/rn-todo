@@ -4,8 +4,8 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native'
 function Todo(props) {
   if (props.todo) {
     return (
-      <TouchableOpacity style={styles.touchableOpacity}>
-        <Text style={styles.todo}> {props.todo} </Text>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={() => props.deleteTodo(props.todo.id)}>
+        <Text style={styles.todo}> {props.todo.value} </Text>
       </TouchableOpacity>
     )
   } else {

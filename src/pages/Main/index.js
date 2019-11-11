@@ -6,6 +6,10 @@ function Main() {
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState([])
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id != id))
+  }
+
   const onChangeText = (value) => setTodo(value)
 
   const onSubmitEditing = () => {
@@ -15,7 +19,7 @@ function Main() {
 
     setTodos([...todos, {
       id: todos.length + 1,
-      todo: todo
+      value: todo
     }])
 
     setTodo('')
@@ -26,7 +30,7 @@ function Main() {
       <Text style={styles.title}> My todo </Text>
       <TextInput style={styles.input} placeholder="What do you have to do?" value={todo} onChangeText={onChangeText} onSubmitEditing={onSubmitEditing}></TextInput>
       <ScrollView>
-        <ListTodo todos={todos}></ListTodo>
+        <ListTodo deleteTodo={deleteTodo} todos={todos}></ListTodo>
       </ScrollView>
     </View >
   )

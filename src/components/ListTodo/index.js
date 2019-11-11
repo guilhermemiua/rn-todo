@@ -4,9 +4,9 @@ import { View } from 'react-native'
 
 function ListTodo(props) {
   const listTodos = props.todos.length ? (
-    props.todos.map((item) => {
+    props.todos.map((todo) => {
       return (
-        <Todo key={item.id} todo={item.todo}> </Todo>
+        <Todo deleteTodo={props.deleteTodo} key={todo.id} todo={todo}> </Todo>
       )
     })
   ) : (
